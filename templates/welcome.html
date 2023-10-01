@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <!-- Link to Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+
+
+</head>
+<body> 
+    <label for="startdate">Start date:</label>
+    <input type="date" id="startdate" name="startdate">
+    <br>
+    <label for="startdate">End date:</label>
+    <input type="date" id="enddate" name="enddate">
+    <br>
+    <button id="scanButton">Start scanning</button>
+
+    <script>
+        // Get references to the date input and the scan button
+        const startDateInput = document.getElementById('startdate');
+        const endDateInput = document.getElementById('enddate');
+        const scanButton = document.getElementById('scanButton');
+    
+        // Add a click event listener to the scan button
+        scanButton.addEventListener('click', function() {
+            // Get the selected date from the date input
+            const selectedStartDate = startDateInput.value;
+            const selectedEndDate = endDateInput.value;
+            const url = `/start_scan?startDate=${selectedStartDate}&endDate=${selectedEndDate}`;
+
+            // Send the selected date to /start_scan
+            window.location.href = url;
+        });
+    </script>
+    
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="image-grid">
+                {% for image_url in image_urls %}
+                    <div class="col-md-3 col-sm-4 col-6 image-item">
+                        <img src="{{ image_url }}" class="img-fluid" alt="Image">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Link to Bootstrap JS (optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

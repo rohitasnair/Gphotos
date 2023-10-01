@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Auth Button</title>
+</head>
+<body>
+    <button id="authButton">Authenticate with Google</button>
+    <script>
+        document.getElementById('authButton').addEventListener('click', function() {
+            // Redirect to the Google OAuth authentication endpoint
+            window.location.href = '/google_auth';
+        });
+    </script>
+</body>
+</html>
